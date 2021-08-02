@@ -1,0 +1,23 @@
+{
+  "id": "610224c0-e4bf-4531-9357-9c29be5673d9",
+  "name": "Spy Integration (NAV2018)",
+  "publisher": "Spy ApS",
+  "brief": "",
+  "description": "Object id's from 77500 to 77549",
+  "version": "2018.0.0.1",
+  "compatibilityId": "2018.0.0.1",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "http://spysystem.dk",
+  "logo": "Logo.jpg",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "11.0.0.0",
+  "application": "11.0.0.0",
+  "idRange": {
+    "from": 77500,
+    "to": 77549
+  }
+}
