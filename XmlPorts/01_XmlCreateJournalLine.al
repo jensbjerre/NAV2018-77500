@@ -319,10 +319,10 @@ xmlport 77501 SpyXmlCreateJournalLine
                 {
                     MinOccurs = Zero;
                     MaxOccurs = Once;
-                    trigger OnAfterAssignVariable()
-                    begin
-                        Evaluate(amount, cashDiscountAmount);
-                    end;
+                    // trigger OnAfterAssignVariable()
+                    // begin
+                    //     Evaluate(amount, cashDiscountAmount);
+                    // end;
                 }
                 textelement(custGroup)
                 {
