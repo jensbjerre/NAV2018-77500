@@ -467,6 +467,7 @@ xmlport 77501 SpyXmlCreateJournalLine
                         evaluate(month, CopyStr(dueDate, 6, 2));
                         evaluate(year, CopyStr(dueDate, 1, 4));
                         journalLine."Due Date" := DMY2Date(day, month, year);
+                        dueDate := '';
                     end;
                     //Set Cash Discount Date
                     if cashDiscountDate <> '' then begin
@@ -474,6 +475,7 @@ xmlport 77501 SpyXmlCreateJournalLine
                         evaluate(month, CopyStr(cashDiscountDate, 6, 2));
                         evaluate(year, CopyStr(cashDiscountDate, 1, 4));
                         journalLine."Pmt. Discount Date" := DMY2Date(day, month, year);
+                        cashDiscountDate := '';
                     end;
                     // Set dimensionsId
                     JournalLine."Dimension Set ID" := DM.CreateDimSetIDFromDimBuf(DB);
