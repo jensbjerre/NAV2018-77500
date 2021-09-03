@@ -350,41 +350,43 @@ xmlport 77501 SpyXmlCreateJournalLine
                         {
                             MinOccurs = Zero;
                             MaxOccurs = Once;
-                        }
-                        trigger OnAfterAssignVariable()
-                        begin
-                            if (dimensionName <> '') and (dimensionValue <> '') then begin
-                                Dim.SetFilter(Code, dimensionName);
-                                if not Dim.FindSet() then begin
-                                    Dim.Init();
-                                    Dim.Code := dimensionName;
-                                    dim.Name := dimensionName;
-                                    Dim.Insert(true);
-                                end;
-                                DV.SetFilter("Dimension Code", dimensionName);
-                                DV.SetFilter(Code, dimensionValue);
-                                if not DV.FindSet() then begin
-                                    DV.Init();
-                                    DV."Dimension Code" := dimensionName;
-                                    DV.Code := dimensionValue;
-                                    DV.Insert(true);
-                                end;
-                                DB.Reset();
-                                DB.SetFilter("Dimension Code", dimensionName);
-                                db.SetFilter("Dimension Value Code", dimensionValue);
-                                db.SetFilter("Table ID", '81');
-                                if not DB.FindSet() then begin
+
+                            trigger OnAfterAssignVariable()
+                            begin
+                                if (dimensionName <> '') and (dimensionValue <> '') then begin
+                                    Dim.SetFilter(Code, dimensionName);
+                                    if not Dim.FindSet() then begin
+                                        Dim.Init();
+                                        Dim.Code := dimensionName;
+                                        dim.Name := dimensionName;
+                                        Dim.Insert(true);
+                                    end;
+                                    DV.SetFilter("Dimension Code", dimensionName);
+                                    DV.SetFilter(Code, dimensionValue);
+                                    if not DV.FindSet() then begin
+                                        DV.Init();
+                                        DV."Dimension Code" := dimensionName;
+                                        DV.Code := dimensionValue;
+                                        DV.Insert(true);
+                                    end;
                                     DB.Reset();
-                                    DB.Init();
-                                    DB."Entry No." := EntryNo;
-                                    EntryNo := EntryNo + 1;
-                                    DB."Table ID" := 81;
-                                    DB."Dimension Code" := dimensionName;
-                                    DB."Dimension Value Code" := dimensionValue;
-                                    DB.Insert();
+                                    DB.SetFilter("Dimension Code", dimensionName);
+                                    db.SetFilter("Dimension Value Code", dimensionValue);
+                                    db.SetFilter("Table ID", '81');
+                                    if not DB.FindSet() then begin
+                                        DB.Reset();
+                                        DB.Init();
+                                        DB."Entry No." := EntryNo;
+                                        EntryNo := EntryNo + 1;
+                                        DB."Table ID" := 81;
+                                        DB."Dimension Code" := dimensionName;
+                                        DB."Dimension Value Code" := dimensionValue;
+                                        DB.Insert();
+                                    end;
                                 end;
                             end;
-                        end;
+                        }
+
                     }
 
 
